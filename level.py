@@ -1,3 +1,5 @@
+"""Classes and functions for describing the state of a level."""
+
 class Grid():
     def __init__(self,width,height):
         self.width = width
@@ -34,39 +36,29 @@ class Tile:
         self.monster = None
 
 class Level:
-    def __init__(self):
-        self.grid = None
+    def __init__(self,width,height):
+        self.grid = Grid(width,height)
         self.turnCount = 0
 
 class LevelGenerator():
     def __init__(self):
         self.level = Level()
+        
+    def generate_rooms(self,level):
+        pass
+    
+    def generate_corridors(self,level):
+        pass
+
+    def generate_items(self,level):
+        pass
+
+    def generate_monsters(self,level):
+        pass
 
     def create_level(self,width,height):
-        self.level.grid = Grid(width,height)
-        rooms = RoomGenerator()
-        corridors = CorridorGenerator()
-        items = ItemGenerator()
-        monsters = MonsterGenerator()
-
-        rooms.generate(self.level)
-        corridors.generate(self.level)
-        items.generate(self.level)
-        monsters.generate(self.level)
+        self.generate_rooms(self.level)
+        self.generate_corridors(self.level)
+        self.generate_items(self.level)
+        self.generate_monsters(self.level)
         
-
-class RoomGenerator():
-    def __init__(self):
-        pass
-
-class CorridorGenerator():
-    def __init__(self):
-        pass
-
-class ItemGenerator():
-    def __init__(self):
-        pass
-
-class MonsterGenerator():
-    def __init__(self):
-        pass
